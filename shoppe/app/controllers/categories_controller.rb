@@ -29,18 +29,10 @@ def index
 
   def update
     current_user
-    if params[:category].include?(:admin)
-      if @admin
-        category = Category.find(params[:id])
-        category.update_attributes(admin: params[:category][:admin])
-        redirect_to "/categorys"
-      end
-    else
-    @current_user.update(category_params)
-    @current_user.save
-    session[:category_id] = @category.id
-    redirect_to @category
-    end
+    category = Category.find(params[:id])
+    category.update(category_params)
+    category.save
+    redirect_to '/categories'
   end
 
   def destroy
