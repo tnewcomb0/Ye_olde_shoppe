@@ -1,0 +1,8 @@
+<h1><%= @current_user.username %>'s Profile</h1>
+<p>First Name: <%= @current_user.first_name %></p>
+<p>Last Name: <%= @current_user.last_name %></p>
+<p>Email: <%= @current_user.email %></p>
+
+<p><%= link_to 'Edit Details', edit_user_path(@current_user),
+      :class=>"btn btn-danger" %></p>
+
