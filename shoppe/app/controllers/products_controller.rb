@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    p @product.save
+    @product.save
     redirect_to "/categories/#{params[:product][:category_id]}"
   end
 
@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
   def edit
     current_user
     @product = Product.find(params[:id])
+    @category = @product.category
   end
 
   def show
@@ -27,18 +28,10 @@ class ProductsController < ApplicationController
 
   def update
     current_user
-    if params[:product].include?(:admin)
-      if @admin
-        product = Product.find(params[:id])
-        product.update_attributes(admin: params[:product][:admin])
-        redirect_to "/products"
-      end
-    else
-    @current_user.update(product_params)
-    @current_user.save
-    session[:product_id] = @product.id
-    redirect_to @product
-    end
+    product = Product.find(params[:id])
+    product.update(product_params)
+    product.save
+    redirect_to "/categories/#{params[:product][:category_id]}"
   end
 
   def destroy

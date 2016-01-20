@@ -7,6 +7,9 @@
     </a>
     <%= item.description %>
     <%= make_price(item.price) %>
+    <%= link_to 'Edit', "/categories/#{@category.id}/products/#{item.id}/edit",
+      method: :get,
+      :class=>"btn btn-default" %>
     <%= link_to 'Add to Cart', '/shopping_carts',
       method: :post,
       :product => (item.id),
