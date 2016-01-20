@@ -8,4 +8,8 @@ module ApplicationHelper
   def current_user=(user)
     session[:user_id] = user.id
   end
+
+  def make_price(price_in_cents)
+    "$#{price_in_cents/100}"
+  end
 end
