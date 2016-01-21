@@ -1,0 +1,23 @@
+  <%= form_for :product, url: category_product_path, html: {method: :put} do |f| %>
+     <%= f.hidden_field :category_id, :value => @category.id%>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </p>
+    <p>
+      <%= f.label :price %><br>
+      <%= f.number_field :price %>
+    </p>
+    <p>
+      <%= f.label :photo_url %><br>
+      <%= f.text_field :photo_url %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>

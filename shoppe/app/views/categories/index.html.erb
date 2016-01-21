@@ -1,0 +1,23 @@
+
+<% @categories.each do |category| %>
+  <div class="col-md-3">
+<a href=<%= "/categories/#{category.id}"%> >
+    <%= category.title %>
+</a>
+    <%= link_to 'Edit', "/categories/#{category.id}/edit",
+      method: :get,
+      :category_id => category.id,
+      :class=>"btn btn-default" %>
+  </div>
+<% end %><br>
+<% if @admin %>
+  <%= form_for :category, url: categories_path do |f| %>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+<% end %>

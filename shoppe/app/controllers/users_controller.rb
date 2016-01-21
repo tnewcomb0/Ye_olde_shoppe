@@ -1,21 +1,28 @@
 class UsersController < ApplicationController
   def index
+    current_user
     @users = User.all
   end
 
   def create
     @user = User.new(user_params)
-    @user.save
-    session[:user_id] = @user.id
-    redirect_to @user
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to @user
+    else
+      set_message('You did not supply the correct credentials, please try again')
+      redirect_to '/users/new'
+    end
   end
 
 
 
   def new
+    current_user
   end
 
   def edit
+    current_user
     @user = User.find(params[:id])
   end
 

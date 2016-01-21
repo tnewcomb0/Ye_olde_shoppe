@@ -1,0 +1,10 @@
+<div class="col-md-3">
+    <img src=<%= @product.photo_url %> >
+    <%= @product.title %><br>
+    <%= make_price(@product.price) %><br>
+    <%= @product.description %>
+        <%= link_to 'Add to Cart', :controller => "shopping_carts", :action => "create", :product_id => @product.id ,
+      method: :post,
+      :class=>"btn btn-default" %>
+  </div>
+

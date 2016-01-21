@@ -1,0 +1,45 @@
+<div class="row">
+<% @products.each do |item| %>
+  <div class="col-md-3">
+    <img src=<%= item.photo_url %> >
+    <a href=<%= "/categories/#{@category.id}/products/#{item.id}"%> >
+    <%= item.title %>
+    </a>
+    <%= item.description %>
+    <%= make_price(item.price) %>
+    <%= link_to 'Edit', "/categories/#{@category.id}/products/#{item.id}/edit",
+      method: :get,
+      :class=>"btn btn-default" %>
+    <%= link_to 'Add to Cart', '/shopping_carts',
+      method: :post,
+      :product => (item.id),
+      :class=>"btn btn-default" %>
+  </div>
+<% end %>
+</div>
+<div class="row">
+  <%= form_for :product, url: "/categories/#{@category.id}/products" do |f| %>
+     <%= f.hidden_field :category_id, :value => @category.id%>
+    <p>
+      <%= f.label :title %><br>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :description %><br>
+      <%= f.text_field :description %>
+    </p>
+    <p>
+      <%= f.label :price %><br>
+      <%= f.number_field :price %>
+    </p>
+    <p>
+      <%= f.label :photo_url %><br>
+      <%= f.text_field :photo_url %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+</div>
+
