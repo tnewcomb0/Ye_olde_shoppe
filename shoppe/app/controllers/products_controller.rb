@@ -12,8 +12,6 @@ class ProductsController < ApplicationController
 
 
 
-  def new
-  end
 
   def edit
     current_user

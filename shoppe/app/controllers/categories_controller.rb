@@ -13,9 +13,6 @@ def index
 
 
 
-  def new
-  end
-
   def edit
     current_user
     @category = Category.find(params[:id])

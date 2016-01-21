@@ -44,6 +44,11 @@
   </header>
   <body>
     <div class="container">
+      <% if @message %>
+        <div class="messages">
+          <%= @message %>
+        </div>
+      <% end %>
       <%= yield %>
 
     </div>
